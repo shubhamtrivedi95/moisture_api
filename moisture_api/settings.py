@@ -23,11 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'r!lhd9@sea-)719p6$a51lqp@l2wb#3_*gsw7vcjp%2-r%t_x*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
     'moisturemonitor.pythonanywhere.com',
+    '192.168.43.106',
 ]
 
 
@@ -135,3 +136,16 @@ STATIC_URL = '/static/'
 #         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
 #     )
 # }
+DEFAULT_RENDERER_CLASSES = (
+    'rest_framework.renderers.JSONRenderer',
+)
+
+if DEBUG:
+    DEFAULT_RENDERER_CLASSES = DEFAULT_RENDERER_CLASSES + (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES
+}
