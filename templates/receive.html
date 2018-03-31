@@ -1,0 +1,15 @@
+<!--DOCTYPE html -->
+<html>
+<head>
+    <title>Moisture Reader</title>
+</head>
+<body>
+<center>{% block content %}
+    {% for post in object_list %}
+    <h5>{{ post.StackNo }}</h5>
+    {% endfor %}
+{% endblock %}
+
+    </center>
+</body>
+</html>

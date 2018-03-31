@@ -16,14 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
-from webapp import views
-
+from webapp import views,forms
+from django.views.generic import ListView,DetailView
+from webapp.models import Machines
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.welcome),
-    path('api/v1/sensors/', views.sensorList.as_view()),
-    path('api/v1/sensors/<slug:rm_No>/', views.uniqueSensorList.as_view(), name='get_sensor'),
-    path('api/v1/sensors/<slug:rm_No>/update/', views.MultiOperation.as_view(), name='update_sensor'),
-    path('api-auth/',include('rest_framework.urls',namespace='rest_framework')),
-  #  path('api/v1/sensors/', views.MultiOperation.as_view(),name='sensor_details'),
+    path('', views.welcome),
+    path('Update', views.post_create),
+    path('Receive/',views.StackView.as_view(),name="show details"),
+    path('api/v1/Stack/', views.StackList.as_view()),
+    path('api/v1/Stack/<slug:MC_No>', views.uniqueStackList.as_view(), name='get_sensor'),
+    path('api/v1/StackView/<slug:MC_No>', views.uniqueStackViewList.as_view(), name='get_sensor'),
+    path('api/v1/Stack/<slug:MC_No>/update/', views.MultiOperation.as_view(), name='update_sensor'),
+    path('api/v1/Stack/update/', views.MultiOperation.as_view(), name='update_sensor'),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

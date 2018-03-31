@@ -1,10 +1,12 @@
 from rest_framework import serializers
-from . models import sensors
+from . models import Machines
 class sensorsSerializer(serializers.ModelSerializer):
     class Meta:
-        model=sensors
+        model=Machines
         fields=(
-            'roomNo',
-            'sensorId',
-            'sensorValue',
+            'TokenNo',
+            'StackNo',
+            'Enable',
+            'GrainMoisture',
+            'ValueCut',
         )
