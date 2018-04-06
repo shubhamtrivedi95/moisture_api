@@ -8,3 +8,11 @@ class GetData(forms.ModelForm):
             'TokenNo',
             'StackNo',
         ]
+
+class ShowData(forms.ModelForm):
+    class Meta:
+        model=Machines
+        fields=[
+            'TokenNo',
+            'StackNo',
+        ]
