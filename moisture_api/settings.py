@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     'moisturemonitor.pythonanywhere.com',
-    '192.168.43.6',
+    '*',
 ]
 
 

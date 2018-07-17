@@ -21,11 +21,12 @@ from django.views.generic import ListView,DetailView
 from webapp.models import Machines
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.welcome),
+    path('', views.post_create),
     path('Update', views.post_create),
     path('api/v1/Retrive/', views.StackViewList.as_view(), name='update_sensor'),
     path('api/v1/update/', views.UpdateOperation.as_view(), name='update_sensor'),
     path('index', views.show),
+    path('done', views.done),
     path('getUnique/', views.showUnqiueStack),
     path('api/v1/Stack/', views.StackList.as_view()),
     path('api/v1/Stack/<slug:MC_No>', views.uniqueStackList.as_view(), name='get_sensor'),

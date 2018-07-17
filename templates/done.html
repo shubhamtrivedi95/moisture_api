@@ -1,0 +1,25 @@
+{% extends "header.html" %}
+
+{% block content %}
+<center>
+<div class="container">
+    <h2><p><font color="white">Request Received</p></h2>
+    <br>
+    <form method="GET">
+        <button type="submit" align="centre" formaction="/index" class="button button1">Check</button>
+         <button type="submit" align="centre" formaction="/Update" class="button button1">Back</button>
+    </form>
+   </div>
+    <br>
+    <br>
+    <div>
+        <form action="/getUnique">
+            <a>Stack Name:</a> <input type="text" name="StackNo" >
+  <br>
+<br>
+  <input type="submit" value="Submit"class="button button1">
+
+</form>
+    </div>
+ </center>
+{% endblock %}

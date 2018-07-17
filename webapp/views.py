@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from . serializers import sensorsSerializer
 from . models import Machines
-from django.shortcuts import get_object_or_404,render
+from django.shortcuts import get_object_or_404,render,redirect
 from django.views.generic.detail import DetailView
 from django.template import loader
 from . forms import GetData,ShowData
@@ -19,11 +19,15 @@ def post_create(request):
         instance=form.save(commit=False)
         instance.save()
         Machines.objects.filter(TokenNo=request.POST.get("TokenNo")).update(Enable=1)
+        return redirect('/done')
     context={
         "form":form ,
     }
     return render(request,'page.html',context)
 
+def done(request):
+    template = loader.get_template('done.html')
+    return HttpResponse(template.render())
 
 def showUnqiueStack(request):
     stack = Machines.objects.filter(StackNo=request.GET["StackNo"])
